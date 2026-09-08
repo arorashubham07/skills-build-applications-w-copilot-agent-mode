@@ -6,6 +6,9 @@ import { TeamModel } from '../models/Team.js'
 import { UserModel } from '../models/User.js'
 import { WorkoutModel } from '../models/Workout.js'
 
+/**
+ * Seed the octofit_db database with test data.
+ */
 async function seedDatabase() {
   await connectToDatabase()
 
