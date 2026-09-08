@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "tsx src/server.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "seed": "tsx src/scripts/seed.ts"
   },
   "dependencies": {
     "express": "^5.2.1",
