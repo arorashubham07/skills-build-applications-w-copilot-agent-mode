@@ -50,7 +50,7 @@ app.use((error: unknown, _request: express.Request, response: express.Response, 
 async function startServer() {
   await connectToDatabase()
 
-  app.listen(port, () => {
+  app.listen(port, '0.0.0.0', () => {
     console.log(`OctoFit Tracker API listening at ${baseUrl}`)
   })
 }
