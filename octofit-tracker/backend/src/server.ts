@@ -1,3 +1,4 @@
+import cors from 'cors'
 import express from 'express'
 import mongoose from 'mongoose'
 import { connectToDatabase } from './config/database.js'
@@ -13,8 +14,13 @@ const codespaceName = process.env.CODESPACE_NAME
 const baseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : `http://localhost:${port}`
+const allowedOrigins = [
+  'http://localhost:5173',
+  ...(codespaceName ? [`https://${codespaceName}-5173.app.github.dev`] : []),
+]
 
 app.use(express.json())
+app.use(cors({ origin: allowedOrigins }))
 
 app.get('/api/health', (_request, response) => {
   response.json({
