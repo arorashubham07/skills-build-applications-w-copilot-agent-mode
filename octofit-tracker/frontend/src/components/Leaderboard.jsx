@@ -1,7 +1,11 @@
 import { useApiCollection } from '../api.js'
 
 function Leaderboard() {
-  const { data: entries, error, loading } = useApiCollection('leaderboard')
+  const codespaceName = import.meta.env.VITE_CODESPACE_NAME
+  const apiUrl = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api/leaderboard`
+    : 'http://localhost:8000/api/leaderboard'
+  const { data: entries, error, loading } = useApiCollection(apiUrl, 'leaderboard')
 
   return (
     <section>

@@ -1,7 +1,11 @@
 import { useApiCollection } from '../api.js'
 
 function Teams() {
-  const { data: teams, error, loading } = useApiCollection('teams')
+  const codespaceName = import.meta.env.VITE_CODESPACE_NAME
+  const apiUrl = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api/teams`
+    : 'http://localhost:8000/api/teams'
+  const { data: teams, error, loading } = useApiCollection(apiUrl, 'teams')
 
   return (
     <section>

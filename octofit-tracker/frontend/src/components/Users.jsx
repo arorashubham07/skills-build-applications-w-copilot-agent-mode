@@ -1,7 +1,11 @@
 import { useApiCollection } from '../api.js'
 
 function Users() {
-  const { data: users, error, loading } = useApiCollection('users')
+  const codespaceName = import.meta.env.VITE_CODESPACE_NAME
+  const apiUrl = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api/users`
+    : 'http://localhost:8000/api/users'
+  const { data: users, error, loading } = useApiCollection(apiUrl, 'users')
 
   return (
     <section>
